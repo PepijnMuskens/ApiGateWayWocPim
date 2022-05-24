@@ -38,5 +38,12 @@ namespace ApiGateWayWocPim.Controllers
             var response = await client.GetStringAsync(baseAddress + "/addproduct?doc=" + json);
             return "succes";
         }
+
+        [EnableCors("CorsPolicy")]
+        [HttpGet("GetProduct")]
+        public async Task<string> Getwithbrand(int id)
+        {
+            return await client.GetStringAsync(baseAddress + "/productsFromBrand?brand="+id);
+        }
     }
 }
