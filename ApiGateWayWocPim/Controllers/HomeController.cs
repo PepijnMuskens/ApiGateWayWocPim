@@ -6,23 +6,23 @@ namespace ApiGateWayWocPim.Controllers
     [EnableCors("CorsPolicy")]
     [ApiController]
     [Route("[controller]")]
-    public class BrandController : ControllerBase
+    public class HomeController : ControllerBase
     {
         
         private readonly ILogger<WeatherForecastController> _logger;
         static HttpClient client = new HttpClient();
         private string baseAddress { get; set; }
-        public BrandController(ILogger<WeatherForecastController> logger)
+        public HomeController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
             baseAddress = "https://i437675.luna.fhict.nl";
         }
 
         [EnableCors("CorsPolicy")]
-        [HttpGet("GetBrands")]
+        [HttpGet("Home")]
         public async Task<string> Get()
         {
-            return await client.GetStringAsync(baseAddress + "/brand/brands");
+            return await client.GetStringAsync(baseAddress + "/home/basic");
         }
     }
 }

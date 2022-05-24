@@ -1,7 +1,12 @@
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Http.Json;
+using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading;
 namespace ApiGateWayWocPim.Controllers
 {
+    [EnableCors("CorsPolicy")]
     [ApiController]
     [Route("[controller]")]
     public class ProductController : ControllerBase
@@ -15,13 +20,23 @@ namespace ApiGateWayWocPim.Controllers
         {
             _logger = logger;
             baseAddress = "https://wocproductservice.azurewebsites.net";
+            //baseAddress = "https://localhost:7023";
             returnstring = "";
         }
 
+        [EnableCors("CorsPolicy")]
         [HttpGet("GetProducts")]
         public async Task<string> Get()
         {
             return await client.GetStringAsync(baseAddress + "/Products");
+        }
+
+        [EnableCors("CorsPolicy")]
+        [HttpGet("Upload")]
+        public async Task<string> Post(string json)
+        {
+            var response = await client.GetStringAsync(baseAddress + "/addproduct?doc=" + json);
+            return "succes";
         }
     }
 }
