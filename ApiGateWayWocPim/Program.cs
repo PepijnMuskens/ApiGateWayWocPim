@@ -4,9 +4,13 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder =>
     {
-        builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+        builder.AllowAnyOrigin();
+        builder.AllowAnyMethod();
+        builder.AllowAnyHeader();
     });
 });
+
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -33,3 +37,10 @@ app.UseCors("CorsPolicy");
 app.MapControllers();
 
 app.Run();
+
+app.UseCors(options =>
+{
+    options.AllowAnyHeader();
+    options.AllowAnyMethod();
+    options.AllowAnyOrigin();
+});

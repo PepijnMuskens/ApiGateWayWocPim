@@ -19,7 +19,7 @@ namespace ApiGateWayWocPim.Controllers
         public CategoryController(ILogger<WeatherForecastController> logger)
         {
             _logger = logger;
-            baseAddress = "https://wocproductservice.azurewebsites.net";
+            baseAddress = "https://productservice20220610120131.azurewebsites.net";
             //baseAddress = "https://localhost:7023";
             returnstring = "";
         }
