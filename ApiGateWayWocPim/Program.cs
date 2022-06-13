@@ -33,14 +33,15 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 app.UseCors("CorsPolicy");
-
-app.MapControllers();
-
-app.Run();
-
 app.UseCors(options =>
 {
     options.AllowAnyHeader();
     options.AllowAnyMethod();
     options.AllowAnyOrigin();
 });
+
+app.MapControllers();
+
+app.Run();
+
+

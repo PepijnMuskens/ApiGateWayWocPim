@@ -45,5 +45,12 @@ namespace ApiGateWayWocPim.Controllers
         {
             return await client.GetStringAsync(baseAddress + "/productsFromBrand?brand="+id);
         }
+
+        [EnableCors("CorsPolicy")]
+        [HttpGet("DeleteProduct")]
+        public async Task<string> Delete(int id)
+        {
+            return await client.GetStringAsync(baseAddress + "/deleteproduct?id=" + id);
+        }
     }
 }
