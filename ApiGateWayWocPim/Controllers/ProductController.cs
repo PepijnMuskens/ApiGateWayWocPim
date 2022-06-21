@@ -20,8 +20,14 @@ namespace ApiGateWayWocPim.Controllers
         {
             _logger = logger;
             baseAddress = "https://wocproductservice.azurewebsites.net";
-            //baseAddress = "https://localhost:7023";
             returnstring = "";
+        }
+
+        [EnableCors("CorsPolicy")]
+        [HttpGet("DeleteProduct")]
+        public async Task<string> Delete(int id)
+        {
+            return await client.GetStringAsync(baseAddress + "/deleteproduct?id="+id);
         }
 
         [EnableCors("CorsPolicy")]
@@ -35,7 +41,7 @@ namespace ApiGateWayWocPim.Controllers
         [HttpGet("Upload")]
         public async Task<string> Post(string json)
         {
-            var response = await client.GetStringAsync(baseAddress + "/addproduct?doc=" + json);
+            await client.GetStringAsync(baseAddress + "/addproduct?doc=" + json);
             return "succes";
         }
 

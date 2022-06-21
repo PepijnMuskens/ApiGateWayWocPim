@@ -20,7 +20,6 @@ namespace ApiGateWayWocPim.Controllers
         {
             _logger = logger;
             baseAddress = "https://wocproductservice.azurewebsites.net";
-            //baseAddress = "https://localhost:7023";
             returnstring = "";
         }
 

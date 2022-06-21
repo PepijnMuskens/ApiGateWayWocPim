@@ -40,8 +40,7 @@ namespace ApiGateWayWocPim.Controllers
             {
                 if (ip.AddressFamily == AddressFamily.InterNetwork)
                 {
-                    ips+= ip.ToString();
-                    ips += "   ";
+                    ips+= ip.ToString() + "   ";
                 }
             }
             return ips;
